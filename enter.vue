@@ -5,11 +5,11 @@
     </span>
     <template v-if="type !== 'textarea'">
       <input :type="type" class="lg-input__inner" :class="[icon === undefined ? 'pl': '']"
-      :placeholder="placeholder" :value="value" @input="enter" @keyup.enter="search"
+      :placeholder="placeholder" :value="value" :readonly='readonly' @input="enter" @keyup.enter="search"
       :required='rule.required' @blur="blur">
     </template>
     <template v-else>
-      <textarea rows="3" :value="value" :placeholder="placeholder" @input="enter"
+      <textarea rows="3" :value="value" :readonly='readonly' :placeholder="placeholder" @input="enter"
       class="lg-textarea__inner"></textarea>
     </template>
     <span class="lg-input__suffix" v-if="show" @click="clear">
@@ -24,6 +24,10 @@ export default {
   name: 'lg-input',
   props: {
     'value': [Number, String],
+    'readonly': {
+      type: Boolean,
+      default: false
+    },
     'placeholder': [String],
     'type': {
       type: String,
