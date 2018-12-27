@@ -47,7 +47,10 @@ export default {
     }
   },
   mounted () {
-    this.select()
+    if (this.model === this.label) {
+      this.checked = true
+      this.select()
+    }
   }
 }
 </script>
