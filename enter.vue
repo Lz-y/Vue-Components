@@ -13,7 +13,7 @@
       class="lg-textarea__inner"></textarea>
     </template>
     <span class="lg-input__suffix" v-if="show" @click="clear">
-      <i class="iconfont lg-close"></i>
+      <i class="iconfont" :class="suffix"></i>
     </span>
     <span class="lg-input__tip" v-if="showTip">{{rule.message}}</span>
   </div>
@@ -42,6 +42,10 @@ export default {
           'message': ''
         }
       }
+    },
+    'suffix': {
+      type: String,
+      default: 'lg-close'
     }
   },
   data () {
